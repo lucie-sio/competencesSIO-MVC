@@ -19,6 +19,7 @@ Projet de site des compétences du BTS SIO. Ce site a pour but de permettre à u
 - [ ] Profil - Ajout des compétences, indicateurs, savoirs à un projet
 - [ ] Profil - Possibilités de modifier les info perso (mdp, portfolio...)
 - [ ] Projet - Page template de visualisation d'un projet
+- [ ] Séparation des parties model et controller
 
 
 
@@ -36,4 +37,4 @@ La connexion se fait avec le système PHP PDO, à une base de données phpMyAdmi
 
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">[<a href="#top">Retour en haut de la page</a>]</p>
