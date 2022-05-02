@@ -24,9 +24,9 @@ Projet de site des compétences du BTS SIO. Ce site a pour but de permettre à u
 
 
 <!-- DATABASE -->
-## Connexion à la base de données
+## Base de données
 
-La connexion se fait avec le système PHP PDO, à une base de données phpMyAdmin. Les informations de connexion doivent être renseignés dans le fichier ./model-controller/db.php dans la fonction "callPDO()".
+Se site s'appuie sur une base de données phpMyAdmin, la connexion est établie avec le système PDO de PHP. Les données sont récupérés depuis la base de données grâce aux requêtes incluses dans le fichier /model-controller/db.php.
 
 
 
