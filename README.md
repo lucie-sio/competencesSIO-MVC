@@ -29,7 +29,7 @@ Projet de site des compétences du BTS SIO. Ce site a pour but de permettre à u
 Se site s'appuie sur une base de données phpMyAdmin, la connexion est établie avec le système PDO de PHP. Les données sont récupérés depuis la base de données grâce aux requêtes incluses dans le fichier /model-controller/db.php.  
 Le fichier "competencesSIO.sql" comprend la structure de la base de données utilisés.
 
-![Schéma conceptuel de la base de données](https://github.com/[lucie-sio/competencesSIO-MVC/Modèle-conceptuel_CompétencesSIO.jpg?raw=true)
+![Schéma conceptuel de la base de données](Modèle-conceptuel_CompétencesSIO.jpg?raw=true)
 
 
 
