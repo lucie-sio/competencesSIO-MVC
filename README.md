@@ -1,8 +1,6 @@
 <div id="top"></div>
-
-
 <!-- Presentation -->
-## Presentation
+## Présentation
 
 Cette solution web a pour but de permettre à un étudiant du BTS SIO de répertorier ses projets scolaires ou professionnels en ligne. Il peut ensuite mettre en lien les compétences du référentiel du BTS qu'il a mit en oeuvre dans ces projets.
 
