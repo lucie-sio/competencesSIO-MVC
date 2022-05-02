@@ -1,0 +1,25 @@
+body {
+    height: 100%;
+}
+
+.bg-secondary {
+    background-color: #ab0044 !important;
+}
+
+.btn-secondary {
+    background-color: #ab0044;
+}
+
+.thead {
+    background-color: #ab0044;
+    color: white;
+}
+
+.customShadow {
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    border-width: 3px !important;
+    border-color: #ab0044 !important;
+}
