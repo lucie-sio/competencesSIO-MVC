@@ -15,11 +15,15 @@ Cette solution web a pour but de permettre à un étudiant du BTS SIO de répert
 - [x] Page de première connexion
 - [x] Page d'erreur
 - [x] Profil - Affichage des données de l'utilisateur
-- [ ] Profil - Ajout d'un projet (nom, description, lien, document pdf ?...)
-- [ ] Profil - Ajout des compétences, indicateurs, savoirs à un projet
-- [ ] Profil - Possibilités de modifier les info perso (mdp, portfolio...)
-- [ ] Projet - Page template de visualisation d'un projet
-- [ ] Séparation des parties Model et Controller
+- [x] Profil - Possibilités de modifier les info perso (mdp, portfolio...)
+- [x] Profil - Ajout d'un projet (nom, description, lien, image...)
+- [x] Projet - Page template de visualisation d'un projet
+- [x] Projet - Ajout/suppression des indicateurs, savoirs à un projet
+- [ ] Projet - Possibilité de modifier ou supprimer un projet
+- [ ] Projet - Ajout d'une image au projet (base64 phpMyAdmin)
+- [ ] Compétences - Page présentant toutes les compétencess/indicateurs/savoirs du BTS SIO
+- [ ] Récapitulatif - Visualisation de tous les indicateurs/savoirs mis en place par l'étudiant (tous projets confondus)
+- [x] Séparation des parties Model et Controller
 
 
 

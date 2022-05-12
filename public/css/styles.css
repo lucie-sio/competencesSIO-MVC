@@ -2,6 +2,11 @@ body {
     height: 100%;
 }
 
+.zoomIn {
+    margin: 10px;
+    transition: transform .2s; /* Animation */
+}
+
 .bg-secondary {
     background-color: #ab0044 !important;
 }
@@ -19,7 +24,18 @@ body {
     box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);
 }
 
+.zoomIn:hover {
+    transform: scale(1.3);
+    cursor: default;
+    z-index: 2;
+}
+
 table {
     border-width: 3px !important;
     border-color: #ab0044 !important;
+}
+
+table select {
+    width: 100px !important;
+    text-overflow: ellipsis;
 }
