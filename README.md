@@ -1,9 +1,21 @@
 <div id="top"></div>
 
-<!-- Presentation -->
+<!-- PRESENTATION -->
 ## Présentation
 
 Cette solution web a pour but de permettre à un étudiant du BTS SIO de répertorier ses projets scolaires ou professionnels en ligne. Il peut ensuite mettre en lien les compétences du référentiel du BTS qu'il a mit en oeuvre dans ces projets.
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table des matières</summary>
+  <ol>
+    <li><a href="#roadmap">Cahier des charges</a></li>
+    <li><a href="#database">Base de données</a></li>
+    <li><a href="#tools">Outils</a></li>
+  </ol>
+</details>
 
 
 
@@ -37,6 +49,7 @@ Le fichier "competencesSIO.sql" contient le script SQL de la structure de la bas
 
 
 
+<!-- TOOLS -->
 ## Outils
 
 * [Bootstrap](https://getbootstrap.com)
