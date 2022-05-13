@@ -11,9 +11,9 @@ Cette solution web a pour but de permettre à un étudiant du BTS SIO de répert
 <details>
   <summary>Table des matières</summary>
   <ol>
-    <li><a href="#roadmap">Cahier des charges</a></li>
-    <li><a href="#database">Base de données</a></li>
-    <li><a href="#tools">Outils</a></li>
+    <li><a href="#cahier-des-charges">Cahier des charges</a></li>
+    <li><a href="#base-de-données">Base de données</a></li>
+    <li><a href="#outils">Outils</a></li>
   </ol>
 </details>
 
