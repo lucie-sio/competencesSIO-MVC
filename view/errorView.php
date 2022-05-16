@@ -4,6 +4,8 @@ $navbar = false;
 ob_start();
 ?>
 
+
+
 <div class="row">
     
     <div class="col">
@@ -20,10 +22,15 @@ ob_start();
                 
             </div>
             <div class="card-footer text-center">
-                <a href="./index.php?action=homepage" class="btn btn-secondary">Retour</a>
+                <?php if(strpos($msg, 'connexion') == false): ?>
+                    <a href="./index.php?action=homepage" class="btn btn-secondary">Retour</a>
+                <?php else: ?>
+                    <a href="./index.php?action=logout" class="btn btn-secondary">Deconnexion</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
+
 </div>
 
 <?php 

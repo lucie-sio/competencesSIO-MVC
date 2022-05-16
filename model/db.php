@@ -28,7 +28,7 @@ function login(string $email, string $password)
 {
     $pdo = callPDO();
 
-    $query = $pdo->prepare('SELECT IDENTIFIANT_ETUD, EMAIL_ETUD, MDP_ETUD FROM ETUDIANT WHERE EMAIL_ETUD = :email');
+    $query = $pdo->prepare('SELECT IDENTIFIANT_ETUD, OPTION_BTS_ETUD, EMAIL_ETUD, MDP_ETUD FROM ETUDIANT WHERE EMAIL_ETUD = :email');
     $query->execute([
         'email' => $email,
     ]);
@@ -44,6 +44,7 @@ function login(string $email, string $password)
         } else {
             session_start();
             $_SESSION['id_etud'] = $utilisateur['IDENTIFIANT_ETUD'];
+            $_SESSION['option'] = $utilisateur['OPTION_BTS_ETUD'];
             if (password_verify('sio', $utilisateur['MDP_ETUD'])) { // Mdp de base
                 return 'firstConnection';
             } else {
@@ -111,32 +112,22 @@ function getEmail(string $token)
 
 /**
  * @param  mixed $id
- * @param  mixed $url
+ * @param  mixed $url (ou NULL pour supprimer le portfolio)
  * @return void
  */
 function addPortfolio($id, $url)
 {
     $pdo = callPDO();
 
-    $query = $pdo->prepare('UPDATE ETUDIANT SET PORTFOLIO_ETUD = :url WHERE IDENTIFIANT_ETUD = :id;');
-    $query->execute([
-        'url' => $url,
-        'id' => $id
-    ]);
-}
-
-/**
- * @param  mixed $id
- * @return void
- */
-function deletePortfolio($id)
-{
-    $pdo = callPDO();
-
-    $query = $pdo->prepare('UPDATE ETUDIANT SET PORTFOLIO_ETUD = NULL WHERE IDENTIFIANT_ETUD = :id;');
-    $query->execute([
-        'id' => $id
-    ]);
+    if($url = 'NULL'){
+        $query = $pdo->query('UPDATE ETUDIANT SET PORTFOLIO_ETUD = NULL WHERE IDENTIFIANT_ETUD = '.$id.';');
+    } else {
+        $query = $pdo->prepare('UPDATE ETUDIANT SET PORTFOLIO_ETUD = :url WHERE IDENTIFIANT_ETUD = :id;');
+        $query->execute([
+            'url' => $url,
+            'id' => $id
+        ]);
+    }
 }
 
 /**
@@ -210,7 +201,7 @@ function addProject($id, $name, $description)
     $query->execute([
         'name' => $name,
         'description' => $description,
-        'id' => $id
+        'id' => $id,
     ]);
 
     return $pdo->lastInsertId();
@@ -230,7 +221,8 @@ function getProjectSkill($table, $link, $id)
         SELECT '.$table.'.N_ITEM, '.$table.'.LIBEL_ITEM 
         FROM '.$table.' 
         INNER JOIN '.$link.' ON '.$table.'.N_ITEM = '.$link.'.N_ITEM 
-        WHERE '.$link.'.ID_PROJET = :id;
+        WHERE '.$link.'.ID_PROJET = :id 
+        ORDER BY '.$table.'.N_ITEM;
     ');
     $query->execute([
         'id' => $id
@@ -284,13 +276,18 @@ function deleteProjectSKill($table, $skill, $id)
 
 /**
  * @param  mixed $table
- * @return array Liste de toutes les compétences OU savoirs OU indicateurs (skillsView)
+ * @return array Liste de toutes les compétences OU savoirs OU indicateurs
  */
-function getSkill($table)
+function getSkills($table)
 {
     $pdo = callPDO();
 
-    $query = $pdo->query('SELECT N_ITEM, LIBEL_ITEM FROM '.$table.';');
+    $query = $pdo->query('
+        SELECT DISTINCT ENSEMBLE_DE_COMPETENCE.ID_NOM_BLOC, ENSEMBLE_DE_COMPETENCE.ID_ENSEMBLE_COMPETENCE, ENSEMBLE_DE_COMPETENCE.LIBEL_ENSEMBLE_COMPETENCE, '.$table.'.N_ITEM, '.$table.'.LIBEL_ITEM 
+        FROM ENSEMBLE_DE_COMPETENCE 
+        INNER JOIN '.$table.' 
+        ON ENSEMBLE_DE_COMPETENCE.ID_ENSEMBLE_COMPETENCE LIKE CONCAT(\'%\', '.$table.'.ID_ENSEMBLE_COMPETENCE, \'%\');
+    ');
 
     return $query->fetchAll();
 }
@@ -300,13 +297,18 @@ function getSkill($table)
  */
 function callPDO()
 {
-    $user = 'XXXXX';
-    $password = 'XXXXX';
-    $dsn = 'mysql:host=localhost;dbname=XXXXX;charset=utf8mb4';
+    $user = 'XXXX';
+    $password = 'XXXX';
+    $dsn = 'mysql:host=localhost;dbname=XXXX;charset=utf8mb4';
 
     try {
         return new PDO($dsn, $user, $password);
     } catch (PDOException $e){
-        throw new Exception('Erreur de connexion à la base de données, veuillez réessayer plus tard.'); 
+        if(isset($_SESSION['id_etud'])){
+            error('Erreur de connexion à la base de données, veuillez réessayer plus tard.');
+            exit();
+        } else {
+            throw new Exception('Erreur de connexion à la base de données, veuillez réessayer plus tard.');
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php 
 
-require('model-controller/frontend.php');
+require('controller/frontend.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -14,6 +14,15 @@ try {
                 break;
             case 'profile':
                 profile();
+                break;
+            case 'project':
+                project();
+                break;
+            case 'skills':
+                skills();
+                break;
+            case 'summary':
+                summary();
                 break;
             case 'logout':
                 logout();

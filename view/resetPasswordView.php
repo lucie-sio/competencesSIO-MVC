@@ -4,6 +4,8 @@ $navbar = false;
 ob_start();
 ?>
 
+
+
 <div class="row">
 
     <!-- En-tête de présentation -->

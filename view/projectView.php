@@ -5,6 +5,7 @@ ob_start();
 ?>
 
 
+
 <div class="row">
 
     <?php if ($erreur != null): ?>
@@ -56,10 +57,17 @@ ob_start();
                     <td colspan="3">
                         <form action="" method="POST">
                             <select name="indicateur" class="form-control">
-                                <option selected>Choisir...</option>
                                 <?php foreach($indicateurs as $indicateur): ?>
-                                <option value="<?= $indicateur['N_ITEM'] ?>"><?= $indicateur['N_ITEM'].' : '.$indicateur['LIBEL_ITEM'] ?></option>
+                                    <?php if((!str_contains($indicateur['ID_ENSEMBLE_COMPETENCE'], 'SLAM') && !str_contains($indicateur['ID_ENSEMBLE_COMPETENCE'], 'SISR')) || str_contains($indicateur['ID_ENSEMBLE_COMPETENCE'], $_SESSION['option'])): ?>
+                                        <?php if($ensemble !== $indicateur['LIBEL_ENSEMBLE_COMPETENCE']) :?>
+                                            <?= $ensemble == '' ? '' : '</optgroup>' ; ?>
+                                            <?php $ensemble = $indicateur['LIBEL_ENSEMBLE_COMPETENCE']; ?>                                           
+                                            <optgroup label="<?= $indicateur['ID_NOM_BLOC'].' : '.$ensemble ?>">
+                                        <?php endif; ?>
+                                        <option value="<?= $indicateur['N_ITEM'] ?>"><?= $indicateur['N_ITEM'].' : '.$indicateur['LIBEL_ITEM'] ?></option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
+                                </optgroup>
                             </select>
                             <button type="submit" class="btn btn-secondary">Ajouter</button>
                         </form>
@@ -91,14 +99,21 @@ ob_start();
                 <tr class="text-center">
                     <td colspan="3">
                     <form action="" method="POST">
-                        <select name="savoir" class="form-control">
-                            <option selected>Choisir...</option>
-                            <?php foreach($savoirs as $savoir): ?>
-                            <option value="<?= $savoir['N_ITEM'] ?>"><?= $savoir['N_ITEM'].' : '.$savoir['LIBEL_ITEM'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <button type="submit" class="btn btn-secondary">Ajouter</button>
-                    </form>
+                            <select name="savoir" class="form-control">
+                                <?php foreach($savoirs as $savoir): ?>
+                                    <?php if((!str_contains($savoir['ID_ENSEMBLE_COMPETENCE'], 'SLAM') && !str_contains($savoir['ID_ENSEMBLE_COMPETENCE'], 'SISR')) || str_contains($savoir['ID_ENSEMBLE_COMPETENCE'], $_SESSION['option'])): ?>
+                                        <?php if($ensemble !== $savoir['LIBEL_ENSEMBLE_COMPETENCE']) :?>
+                                            <?= $ensemble == '' ? '</optgroup>' : '' ; ?>
+                                            <?php $ensemble = $savoir['LIBEL_ENSEMBLE_COMPETENCE'] ?>
+                                            <optgroup label="<?= $savoir['ID_NOM_BLOC'].' : '.$ensemble ?>">
+                                        <?php endif; ?>
+                                        <option value="<?= $savoir['N_ITEM'] ?>"><?= $savoir['N_ITEM'].' : '.$savoir['LIBEL_ITEM'] ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                                </optgroup>
+                            </select>
+                            <button type="submit" class="btn btn-secondary">Ajouter</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>

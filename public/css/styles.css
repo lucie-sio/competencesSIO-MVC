@@ -34,8 +34,3 @@ table {
     border-width: 3px !important;
     border-color: #ab0044 !important;
 }
-
-table select {
-    width: 100px !important;
-    text-overflow: ellipsis;
-}

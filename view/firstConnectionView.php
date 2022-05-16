@@ -4,6 +4,8 @@ $navbar = false;
 ob_start();
 ?>
 
+
+
 <div class="row">
 
     <!-- En-tête de présentation -->
@@ -42,8 +44,6 @@ ob_start();
 
     <div class="col-md-1"></div>
     
-    
-
 </div>
 
 <?php 

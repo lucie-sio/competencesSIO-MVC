@@ -13,24 +13,35 @@
     </head>
 
     <body>
-        <?php if($navbar === true): ?>
-        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-secondary customShadow">
-            <div class="navbar-nav mr-auto">
-                <div class="navbar-brand">
-                    <img src="./public/img/logo-certa-background.png" height="30">
-                </div>
-            </div>
 
-            <div class="navbar-nav ml-auto">  
-                <a href="./index.php?action=logout" class="btn btn-light float-right">Se déconnecter</a>  
-            </div>
-        </nav>    
-        <?php endif; ?>
-        <?= $content ?>
+        <?php if($navbar === true): ?>
+            <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-secondary customShadow mb-3">
+                <div class="navbar-nav mr-auto">
+                    <div class="navbar-brand">
+                        <img src="./public/img/logo-certa-background.png" height="30">
+                    </div>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="index.php?action=profile">Mon Profil</a>
+                        <a class="nav-item nav-link active" href="index.php?action=skills">Catalogue</a>
+                        <a class="nav-item nav-link active" href="index.php?action=summary">Recapitulatif</a>
+                    </div>
+                </div>
+
+                <div class="navbar-nav ml-auto">  
+                    <a href="./index.php?action=logout" class="btn btn-light float-right">Se déconnecter</a>  
+                </div>
+            </nav> 
+        <?php endif; ?>  
+
+        <main class="container">
+            <?= $content ?>
+        </main>
+
         <!-- JQuery & Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
     </body>
     
 </html>

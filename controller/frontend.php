@@ -46,7 +46,7 @@ function profile()
         if (!empty($_POST)) {
             if($_POST["type"] == "form1") { // CHANGEMENT/AJOUT DU PORTFOLIO)
                 if (isset($_POST['supprimer'])) {
-                    deletePortfolio($user['IDENTIFIANT_ETUD']);
+                    addPortfolio($user['IDENTIFIANT_ETUD'], 'NULL');
                     $user['PORTFOLIO_ETUD'] = NULL;
                     $valide = "<b>Portfolio</b> : Adresse du portfolio supprimée."; 
 
@@ -101,6 +101,8 @@ function project()
 {
     $erreur = null;
     $valide = null;
+    $bloc = '';
+    $ensemble = '';
 
     if (isset($_GET['id'])){
         try 
@@ -115,8 +117,8 @@ function project()
             $projectIndicateurs = getProjectSkill('ITEM_INDICATEUR', 'INDICATEUR', $_GET['id']);
             $projectSavoirs = getProjectSkill('SAVOIR', 'MOBILISER', $_GET['id']);
             
-            $indicateurs = getSkill('ITEM_INDICATEUR');
-            $savoirs = getSkill('SAVOIR');           
+            $indicateurs = getSkills('ITEM_INDICATEUR');
+            $savoirs = getSkills('SAVOIR');           
 
             if (isset($_POST['indicateur'])){
                 addProjectSkill('INDICATEUR', $_POST['indicateur'], $_GET['id']);
@@ -148,12 +150,44 @@ function project()
                 $erreur = $e->getMessage();
             }
         }
-        require('view/projectView.php');
     } else {
         homepage();
         exit();
     }
+    require('view/projectView.php');
     
+}
+
+function skills()
+{
+    $erreur = '';
+    $bloc = '';
+    $ensemble = '';
+    try 
+    {
+        forcedConnection();
+        $competences = getSkills('ITEM_COMPETENCE');
+        $indicateurs = getSkills('ITEM_INDICATEUR');
+        $savoirs = getSkills('SAVOIR'); 
+
+    } catch (Exception $e) {
+        $erreur = $e->getMessage();
+    }
+    
+    require('view/skillsView.php');
+}
+
+function summary()
+{
+    $erreur = '';
+    try
+    {
+        forcedConnection();
+    } catch (Exception $e) {
+        $erreur = $e->getMessage();
+    }
+    
+    require('view/summaryView.php');
 }
 
 function resetPassword()
@@ -234,14 +268,15 @@ function resetPassword()
 function firstConnection()
 {
     $erreur = null;
-    forcedConnection();
-    $user = getUser($_SESSION['id_etud']);
-    if (!password_verify('sio', $user['MDP_ETUD'])) {
-        header('Location: index.php?action=profile');
-        exit();
-    }
+
     try 
     {
+        forcedConnection();
+        $user = getUser($_SESSION['id_etud']);
+        if (!password_verify('sio', $user['MDP_ETUD'])) {
+            header('Location: index.php?action=profile');
+            exit();
+        }
         if (!empty($_POST)) { 
             if (!empty($_POST['password']) && !empty($_POST['passwordConfirm'])) { // deux champs remplis
                 if(strlen($_POST['password']) > 7) { // longueur suffisante
@@ -271,6 +306,7 @@ function logout()
 {
     session_start();
     unset($_SESSION['id_etud']);
+    unset($_SESSION['option']);
     header('Location: index.php?action=homepage');
     die();
 }

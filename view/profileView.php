@@ -1,8 +1,10 @@
 <?php 
-$title = 'Ma Page'; 
+$title = 'Profil'; 
 $navbar = true;
 ob_start();
 ?>
+
+
 
 <div class="row">
 
@@ -45,7 +47,7 @@ ob_start();
     </div>
     
     <!-- PROJETS -->
-    <div class="col-12 mb-4 mt-4 border">
+    <div class="col-12 mb-4 mt-4 pb-4 border">
         <h1 class="text-center"><b>Mes projets</b></h1>
         <hr>
         <div class="row">
@@ -134,8 +136,8 @@ ob_start();
                             <input type="text" class="form-control" name="nameProject">
                         </div>
                         <div class="form-group">
-                            <label>Description du projet (max. 3000 caractères)</label>
-                            <textarea type="text" class="form-control" rows="3" maxlength="3000" name="descriptionProject"></textarea>
+                            <label>Description du projet (max. 1000 caractères)</label>
+                            <textarea type="text" class="form-control" rows="3" maxlength="1000" name="descriptionProject"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
