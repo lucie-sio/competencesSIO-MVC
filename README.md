@@ -43,7 +43,9 @@ Cette solution web a pour but de permettre à un étudiant du BTS SIO de répert
 ## Base de données
 
 Ce site s'appuie sur une base de données phpMyAdmin, la connexion est établie avec le système PDO de PHP. Les données sont récupérés depuis la base de données grâce aux requêtes incluses dans le fichier /model-controller/db.php.  
-Le fichier "competencesSIO.sql" contient le script SQL de la structure de la base de données utilisée.
+Le fichier "competencesSIO.sql" contient le script SQL de la structure de la base de données utilisée, ainsi que les données relatives au compétences (Blocs, Ensemble, Compétences, Indicateurs, Savoirs).  
+La table étudiant contient un ligne pour permettre une connexion sur le site grâce aux identifiants suivants : test-competencesSIO@outlook.fr, mdp par défaut 'sio'.  
+La fonctionnalité de récupération du mot de passe ne marchera que si vous avez accès à la boîte mail du mail fournit. 
 
 ![Schéma conceptuel de la base de données](Modèle-conceptuel_CompétencesSIO.jpg?raw=true)
 
