@@ -31,7 +31,7 @@ Cette solution web a pour but de permettre à un étudiant du BTS SIO de répert
 - [x] Profil - Ajout d'un projet (nom, description, lien, image...)
 - [x] Projet - Page template de visualisation d'un projet
 - [x] Projet - Ajout/suppression des indicateurs, savoirs à un projet
-- [ ] Projet - Possibilité de modifier ou supprimer un projet
+- [x] Projet - Possibilité de modifier ou supprimer un projet
 - [ ] Projet - Ajout d'une image au projet (base64 phpMyAdmin)
 - [x] Compétences - Page présentant toutes les compétencess/indicateurs/savoirs du BTS SIO
 - [ ] Récapitulatif - Visualisation de tous les indicateurs/savoirs mis en place par l'étudiant (tous projets confondus)
