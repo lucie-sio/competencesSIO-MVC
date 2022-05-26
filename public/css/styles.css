@@ -1,10 +1,10 @@
-body {
-    height: 100%;
+@keyframes BLINK {
+    0%, 100% {background-color:#000000;}
+    50% {background-color: #ff0000;}
 }
 
-.zoomIn {
-    margin: 10px;
-    transition: transform .2s; /* Animation */
+body {
+    height: 100%;
 }
 
 .bg-secondary {
@@ -15,6 +15,18 @@ body {
     background-color: #ab0044;
 }
 
+.btn-danger {
+    transition: transform .2s; /* Animation */
+    transition: box-shadow 0.7s;
+}
+
+.btn-danger:hover {
+    transform: scale(3);
+    animation: BLINK 0.7s infinite;
+    box-shadow: 0 0 20px 1000px rgba(0, 0, 0, 0.824);
+    transition: box-shadow 1.5s;
+}
+
 .thead {
     background-color: #ab0044;
     color: white;
@@ -22,6 +34,11 @@ body {
 
 .customShadow {
     box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.zoomIn {
+    margin: 10px;
+    transition: transform .2s; /* Animation */
 }
 
 .zoomIn:hover {

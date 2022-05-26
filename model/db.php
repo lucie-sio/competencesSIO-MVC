@@ -179,9 +179,43 @@ function getProject($id)
     
 }
 
-function deleteProject()
+/**
+ * @param  mixed $id
+ * @param  string $title
+ * @return void
+ */
+function addProjectTitle($title, $id)
 {
+    $pdo = callPDO();
 
+    $query = $pdo->prepare('UPDATE PROJET SET LIBEL_PROJET = :title WHERE ID_PROJET = :id;');
+    $query->execute([
+        'title' => $title,
+        'id' => $id
+    ]);
+}
+
+/**
+ * @param  mixed $id
+ * @param  string $desc
+ * @return void
+ */
+function addProjectDescription($desc, $id)
+{
+    $pdo = callPDO();
+
+    $query = $pdo->prepare('UPDATE PROJET SET DESCRIPTION_PROJET = :desc WHERE ID_PROJET = :id;');
+    $query->execute([
+        'desc' => $desc,
+        'id' => $id
+    ]);
+}
+
+function deleteProject($id)
+{
+    $pdo = callPDO();
+
+    $pdo->query('DELETE FROM PROJET WHERE ID_PROJET = '.$id.';');
 }
 
 /**

@@ -79,7 +79,7 @@ function profile()
             } else if($_POST["type"] == "form3") { // AJOUT D'UN PROJET
                 if (!empty($_POST['nameProject']) && !empty($_POST['descriptionProject'])) {
                     if (strlen($_POST['nameProject']) < 100  && strlen($_POST['descriptionProject']) < 3000) {
-                        $idProject = addProject($user['IDENTIFIANT_ETUD'], $_POST['nameProject'], $_POST['descriptionProject']);
+                        $idProject = addProject($user['IDENTIFIANT_ETUD'], htmlentities($_POST['nameProject']), htmlentities($_POST['descriptionProject']));
                         header('Location: index.php?action=project&id='.$idProject);
                         exit();
 
@@ -120,16 +120,16 @@ function project()
             $indicateurs = getSkills('ITEM_INDICATEUR');
             $savoirs = getSkills('SAVOIR');           
 
-            if (isset($_POST['indicateur'])){
+            if (isset($_POST['indicateur'])){ // Ajout indicateur au projet
                 addProjectSkill('INDICATEUR', $_POST['indicateur'], $_GET['id']);
                 header('Location: index.php?action=project&id='.$_GET['id']);
                 exit();
                 
-            } elseif (isset($_POST['savoir'])){
+            } elseif (isset($_POST['savoir'])){ // Ajout savoir au projet
                 addProjectSkill('MOBILISER', $_POST['savoir'], $_GET['id']);
                 header('Location: index.php?action=project&id='.$_GET['id']);
                 exit();
-            } elseif (isset($_POST['supprimer'])){
+            } elseif (isset($_POST['supprimer'])){ // Suppression d'un indicateur ou savoir
                 if($_POST['type'] == 'indicateur') {
                     deleteProjectSKill('INDICATEUR', $_POST['supprimer'], $_GET['id']);
                     header('Location: index.php?action=project&id='.$_GET['id']);
@@ -139,6 +139,19 @@ function project()
                     header('Location: index.php?action=project&id='.$_GET['id']);
                     exit();
                 }
+            } elseif (isset($_POST['modifier'])){ // Modification du projet
+                if($_POST['nameProject'] != ''){
+                    addProjectTitle(htmlentities($_POST['nameProject']), $_GET['id']);
+                    $project['LIBEL_PROJET'] = htmlentities($_POST['nameProject']);
+                }
+                if($_POST['descriptionProject'] != $project['DESCRIPTION_PROJET']){
+                    addProjectDescription(htmlentities($_POST['descriptionProject']), $_GET['id']);
+                    $project['DESCRIPTION_PROJET'] = htmlentities($_POST['descriptionProject']);
+                }
+            } elseif (isset($_POST['suppProjet'])){ // Suppression du projet
+                deleteProject($_GET['id']);
+                header('Location: index.php?action=profile');
+                die();
             }
 
         } catch(Exception $e) {

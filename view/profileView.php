@@ -68,7 +68,7 @@ ob_start();
     </div>
 
 
-    <!-- MODAUX -->
+    <!-- LISTE MODAL -->
     <!-- ModalProfile -->
     <div class="modal fade" id="ModalProfile" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

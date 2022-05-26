@@ -30,6 +30,7 @@ ob_start();
     <div class="col-12">
         <h1 class="text-center"><?= $project['LIBEL_PROJET'] ?></h1>
         <p><b>Description</b> : <?= $project['DESCRIPTION_PROJET']?></p>
+        <hr>
     </div>
 
     <!-- TABLEAU DES INDICATEURS -->
@@ -98,7 +99,7 @@ ob_start();
                 <?php endforeach; ?>
                 <tr class="text-center">
                     <td colspan="3">
-                    <form action="" method="POST">
+                        <form action="" method="POST">
                             <select name="savoir" class="form-control">
                                 <?php foreach($savoirs as $savoir): ?>
                                     <?php if((!str_contains($savoir['ID_ENSEMBLE_COMPETENCE'], 'SLAM') && !str_contains($savoir['ID_ENSEMBLE_COMPETENCE'], 'SISR')) || str_contains($savoir['ID_ENSEMBLE_COMPETENCE'], $_SESSION['option'])): ?>
@@ -121,28 +122,67 @@ ob_start();
     </div>
     
 
+    <div class="col-12 text-center">
+        <hr>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete">
+            SUPPRIMER LE PROJET
+        </button>
+    </div>
 
 
-
-
+    <!-- LISTE MODAL -->
     <!-- ModalProject -->
     <div class="modal fade" id="ModalProject" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title">Modifier le projet</h5>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-secondary">Enregistrer</button>
-                </div>
+                
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <input type="hidden" name="modifier">
+                        <div class="form-group">
+                            <label>Nom du projet</label>
+                            <input type="text" class="form-control" name="nameProject" placeholder="<?= $project['LIBEL_PROJET'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Description du projet (max. 1000 caractères)</label>
+                            <textarea type="text" class="form-control" rows="3" maxlength="1000" name="descriptionProject"><?= $project['DESCRIPTION_PROJET'] ?></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-secondary">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
     <!-- ModalProject End -->
+
+    
+    <!-- ModalDelete -->
+    <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Supprimer le projet</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Cette action supprimera ce projet ainsi que les compétences associées.</p>
+                    <form action="" method="POST">
+                        <button class="btn btn-secondary btn-lg" type="submit" name="suppProjet">
+                            Confirmer la suppression
+                        </button>
+                        <button type="button" class="btn btn-light btn-lg" data-dismiss="modal">Annuler</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ModalDelete End -->
 
 </div>
 
