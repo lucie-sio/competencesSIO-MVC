@@ -27,8 +27,8 @@ Cette solution web a pour but de permettre à un étudiant du BTS SIO de répert
 - [x] Page de première connexion
 - [x] Page d'erreur
 - [x] Profil - Affichage des données de l'utilisateur
-- [x] Profil - Possibilités de modifier les info perso (mdp, portfolio...)
-- [x] Profil - Ajout d'un projet (nom, description, lien, image...)
+- [x] Profil - Possibilités de modifier les info perso (mdp & portofolio)
+- [x] Profil - Ajout d'un projet (nom, description, ~~lien, image~~...)
 - [x] Projet - Page template de visualisation d'un projet
 - [x] Projet - Ajout/suppression des indicateurs, savoirs à un projet
 - [x] Projet - Possibilité de modifier ou supprimer un projet
