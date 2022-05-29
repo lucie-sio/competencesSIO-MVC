@@ -16,15 +16,14 @@ body {
 }
 
 .btn-danger {
-    transition: transform .2s; /* Animation */
-    transition: box-shadow 0.7s;
+    transition: transform .2s, box-shadow 1s;
 }
 
 .btn-danger:hover {
-    transform: scale(3);
+    transform: scale(2);
     animation: BLINK 0.7s infinite;
     box-shadow: 0 0 20px 1000px rgba(0, 0, 0, 0.824);
-    transition: box-shadow 1.5s;
+    transition: transform .2s, box-shadow 1.5s;
 }
 
 .thead {
