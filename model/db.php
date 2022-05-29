@@ -326,6 +326,23 @@ function getSkills($table)
     return $query->fetchAll();
 }
 
+function getSummary($table, $link, $id)
+{
+    $pdo = callPDO();
+
+    $query = $pdo->query('
+        SELECT '.$table.'.N_ITEM, '.$table.'.LIBEL_ITEM, PROJET.ID_PROJET, PROJET.LIBEL_PROJET  
+        FROM '.$table.' 
+        INNER JOIN '.$link.' ON '.$table.'.N_ITEM = '.$link.'.N_ITEM 
+        INNER JOIN PROJET ON '.$link.'.ID_PROJET = PROJET.ID_PROJET 
+        INNER JOIN REALISER ON PROJET.ID_PROJET = REALISER.ID_PROJET 
+        WHERE REALISER.IDENTIFIANT_ETUD = '.$id.' 
+        ORDER BY '.$table.'.N_ITEM ASC;
+    ');
+
+    return $query->fetchAll();
+}
+
 /**
  * @return PDO
  */

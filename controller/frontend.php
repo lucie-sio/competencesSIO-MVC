@@ -186,20 +186,23 @@ function skills()
     } catch (Exception $e) {
         $erreur = $e->getMessage();
     }
-    
     require('view/skillsView.php');
 }
 
 function summary()
 {
     $erreur = '';
+    $item = '';
     try
     {
         forcedConnection();
+        $user = getUser($_SESSION['id_etud']);
+        $summaryIndicateurs = getSummary('ITEM_INDICATEUR', 'INDICATEUR', $_SESSION['id_etud']);
+        $summarySavoirs = getSummary('SAVOIR', 'MOBILISER', $_SESSION['id_etud']);
+
     } catch (Exception $e) {
         $erreur = $e->getMessage();
     }
-    
     require('view/summaryView.php');
 }
 

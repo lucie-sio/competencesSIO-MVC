@@ -40,16 +40,19 @@ ob_start();
             <button class="btn btn-secondary" data-toggle="modal" data-target="#ModalProfile">Modifier mes informations</button>
         </div>
         <!-- Bouton ModalProject -->
+        <?php if(!empty($projects)): ?>
         <div>
             <button class="btn btn-secondary" data-toggle="modal" data-target="#ModalProject">Ajouter un projet</button>
         </div>
-        
+        <?php endif; ?>
     </div>
     
     <!-- PROJETS -->
+    
     <div class="col-12 mb-4 mt-4 pb-4 border">
         <h1 class="text-center"><b>Mes projets</b></h1>
         <hr>
+        <?php if(!empty($projects)): ?>
         <div class="row">
             <!-- LES PROJETS -->
             <?php foreach($projects as $project): ?>
@@ -65,8 +68,14 @@ ob_start();
             <?php endforeach; ?>  
             </div>
         </div>
-    </div>
+        <?php else: ?>
+        <div class="text-center">
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#ModalProject">Ajouter un projet</button>
+        </div>
+        <?php endif; ?>
 
+    </div>
+    
 
     <!-- LISTE MODAL -->
     <!-- ModalProfile -->

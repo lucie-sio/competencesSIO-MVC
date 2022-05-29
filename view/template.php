@@ -22,8 +22,8 @@
                     </div>
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="index.php?action=profile">Mon Profil</a>
-                        <a class="nav-item nav-link active" href="index.php?action=skills">Catalogue</a>
                         <a class="nav-item nav-link active" href="index.php?action=summary">Recapitulatif</a>
+                        <a class="nav-item nav-link active" href="index.php?action=skills">Catalogue</a>
                     </div>
                 </div>
 
