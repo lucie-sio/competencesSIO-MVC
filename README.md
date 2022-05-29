@@ -34,7 +34,7 @@ Cette solution web a pour but de permettre à un étudiant du BTS SIO de répert
 - [x] Projet - Possibilité de modifier ou supprimer un projet
 - [ ] Projet - Ajout d'une image au projet (base64 phpMyAdmin)
 - [x] Compétences - Page présentant toutes les compétencess/indicateurs/savoirs du BTS SIO
-- [ ] Récapitulatif - Visualisation de tous les indicateurs/savoirs mis en place par l'étudiant (tous projets confondus)
+- [x] Récapitulatif - Visualisation de tous les indicateurs/savoirs mis en place par l'étudiant (tous projets confondus)
 - [x] Séparation des parties Model et Controller
 
 
