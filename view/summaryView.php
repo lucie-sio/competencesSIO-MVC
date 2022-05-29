@@ -36,9 +36,9 @@ ob_start();
                             </td>
                         </tr>
                         <tr>
-                            <td><?= $indicateur['N_ITEM'] ?></td>
+                            <td class="text-center align-middle"><?= $indicateur['N_ITEM'] ?></td>
                             <td><?= $indicateur['LIBEL_ITEM'] ?></td>
-                            <td class="text-center"><a href="index.php?action=project&id=<?= $indicateur['ID_PROJET'] ?>" target="_blank"><?= $indicateur['LIBEL_PROJET'] ?></a>
+                            <td class="text-center align-middle"><a href="index.php?action=project&id=<?= $indicateur['ID_PROJET'] ?>" target="_blank"><?= $indicateur['LIBEL_PROJET'] ?></a>
                             <?php endif ; ?>
                         <?php $item = $indicateur['N_ITEM'] ?>
                     <?php endforeach; ?>
@@ -65,9 +65,9 @@ ob_start();
                             </td>
                         </tr>
                         <tr>
-                            <td><?= $savoir['N_ITEM'] ?></td>
+                            <td class="text-center align-middle"><?= $savoir['N_ITEM'] ?></td>
                             <td><?= $savoir['LIBEL_ITEM'] ?></td>
-                            <td class="text-center"><a href="index.php?action=project&id=<?= $savoir['ID_PROJET'] ?>" target="_blank"><?= $savoir['LIBEL_PROJET'] ?></a>
+                            <td class="text-center align-middle"><a href="index.php?action=project&id=<?= $savoir['ID_PROJET'] ?>" target="_blank"><?= $savoir['LIBEL_PROJET'] ?></a>
                             <?php endif ; ?>
                         <?php $item = $savoir['N_ITEM'] ?>
                     <?php endforeach; ?>
