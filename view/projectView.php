@@ -34,7 +34,7 @@ ob_start();
     </div>
 
     <!-- TABLEAU DES INDICATEURS -->
-    <div class="col-6">
+    <div class="col-md-6">
         <table class="table table-bordered table-sm">
             <thead class="thead">
                 <tr class="text-center">
@@ -79,7 +79,7 @@ ob_start();
     </div>
 
     <!-- TABLEAU DES SAVOIRS -->
-    <div class="col-6">
+    <div class="col-md-6">
         <table class="table table-bordered table-sm">
             <thead class="thead">
                 <tr class="text-center">
@@ -122,7 +122,7 @@ ob_start();
     </div>
     
 
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mb-3">
         <hr>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete">
             SUPPRIMER LE PROJET
